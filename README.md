@@ -36,9 +36,8 @@ Things you may want to cover:
 | first_name      | string | null: false  |
 | family_name_cana| string | null: false  |
 | first_name_cana | string | null: false  |
-| birth_year      | integer| null: false  |
-| birth_mouth     | integer| null: false  |
-| birth_day       | integer| null: false  |
+| birthday        | data   | null: false  |
+
 
 ### Association
 
@@ -50,7 +49,6 @@ Things you may want to cover:
 |  Column             | Type         | Options                       |
 | ------------------- | ------------ | ----------------------------- |
 | product_name        | string       | null: false                   |
-| product_img_id      | references   | null: false, foreign_key: true|
 | content             | text         | null: false                   |
 | category_id         | integer      | null: false, foreign_key: true|
 | product_condition_id| integer      | null: false, foreign_key: true|
@@ -58,7 +56,7 @@ Things you may want to cover:
 | delivery_fee_id     | integer      | null: false, foreign_key: true|
 | delivery_day_id     | integer      | null: false, foreign_key: true|
 | price               | integer      | null: false                   |
-| user_id             | references   | null: false, foreign_key: true|
+| user_id             | integer      | null: false, foreign_key: true|
 
 ### Association
 
@@ -69,12 +67,9 @@ Things you may want to cover:
 
 |  Column             | Type         | Options                       |
 | ------------------- | ------------ | ----------------------------- |
-| user_id             | references   | null: false, foreign_key: true|
-| product_id          | references   | null: false, foreign_key: true|
-| card_number         | integer      | null: false                   |
-| expiration_year     | integer      | null: false                   |
-| expiration_mouth    | integer      | null: false                   |
-| security_code       | integer      | null: false                   |
+| user_id             | integer      | null: false, foreign_key: true|
+| product_id          | integer      | null: false, foreign_key: true|
+
 
 ### Association
 
@@ -92,7 +87,7 @@ Things you may want to cover:
 | house_number        | string       | null: false                   |
 | building            | string       | null: false                   |
 | phone_number        | integer      | null: false                   |
-| purchaser_id        | references   | null: false, foreign_key: true|
+| purchaser_id        | integer      | null: false, foreign_key: true|
 
 ### Association
 
