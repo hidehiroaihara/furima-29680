@@ -36,7 +36,7 @@ Things you may want to cover:
 | first_name      | string | null: false  |
 | family_name_cana| string | null: false  |
 | first_name_cana | string | null: false  |
-| birthday        | data   | null: false  |
+| birthday        | date   | null: false  |
 
 
 ### Association
@@ -48,7 +48,7 @@ Things you may want to cover:
 
 |  Column             | Type         | Options                       |
 | ------------------- | ------------ | ----------------------------- |
-| product_name        | string       | null: false                   |
+| product_name        | name         | null: false                   |
 | content             | text         | null: false                   |
 | category_id         | integer      | null: false, foreign_key: true|
 | product_condition_id| integer      | null: false, foreign_key: true|
