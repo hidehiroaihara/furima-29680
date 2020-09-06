@@ -4,6 +4,7 @@ FactoryBot.define do
     email                  {Faker::Internet.free_email}
     password               {Faker::Internet.password(min_length: 6)}
     password_confirmaiton  {password}
+    
       transient do
         person { Gimei.name }
       end
