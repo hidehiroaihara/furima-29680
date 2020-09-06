@@ -81,12 +81,12 @@ Things you may want to cover:
 
 |  Column             | Type         | Options                       |
 | ------------------- | ------------ | ----------------------------- |
-| post_code           | integer      | null: false                   |
+| post_code           | string      | null: false                   |
 | prefecture_id       | integer      | null: false                   |
 | city                | string       | null: false                   |
 | house_number        | string       | null: false                   |
 | building            | string       |                               |
-| phone_number        | integer      | null: false                   |
+| phone_number        | string      | null: false                   |
 | purchaser_id        | integer      | null: false, foreign_key: true|
 
 ### Association
