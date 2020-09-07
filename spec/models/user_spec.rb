@@ -19,9 +19,9 @@ describe User do
         @user.first_name_cana = "カツヒロ"
         expect(@user).to be_valid
       end
-      it "passwordが6文字以上であれば登録できる" do
-        @user.password = "000000"
-        @user.password_confirmation = "000000"
+      it "passwordが英数字6文字以上であれば登録できる" do
+        @user.password = "0000ai"
+        @user.password_confirmation = "0000ai"
         expect(@user).to be_valid
       end
     end
@@ -71,6 +71,12 @@ describe User do
         @user.password_confirmation = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+      it "数字のみで６文字以上入力した場合登録できない" do
+        @user.password = "1111111"
+        @user.password_confirmation = "1111111"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
       end
       it "family_nameが空では登録できない" do
         @user.family_name = ""
