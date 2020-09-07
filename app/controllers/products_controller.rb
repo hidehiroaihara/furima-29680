@@ -5,5 +5,17 @@ class ProductsController < ApplicationController
   def new
     @Product = Product.new
   end
-  
+  def created
+    Product.create(product_params)
+  end
+  def destroy
+    prodcut = Product.find(params[:id])
+    product.destory
+  def edit
+    
+  private
+  def product_params
+    params.require(:product).permit(:name, :content, :category_id, :products_condition_id, :shipping_id, :delivery_fee_id, :delivery_day_id, :price, :user_id)
+  end
+
 end
