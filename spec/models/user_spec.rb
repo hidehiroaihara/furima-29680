@@ -44,19 +44,30 @@ describe User do
         another_user.valid?
         expect(another_user.errors.full_messages).to include("Email has already been taken")
       end
+      it "emailには@が含まれていない場合は登録できない" do
+        @user.email = "ddjkao1234.gmail.com"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
       it "passwordが空では登録できない" do
         @user.password = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it "passwordが5文字以下であれば登録できない" do
-        @user.password = "12345"
-        @user.password_confirmation = "12345"
+        @user.password = "123ai"
+        @user.password_confirmation = "123ai"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+      end 
+      it "パスワードには英数字が混在していない場合に登録できない" do
+        @user.password = "aaaaaa"
+        @user.password_confirmation = "aaaaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
       end
       it "passwordが存在してもpassword_confirmationが空では登録できない" do
-        @user.password = "000000"
+        @user.password = "0000ai"
         @user.password_confirmation = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
