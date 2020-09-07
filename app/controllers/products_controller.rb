@@ -5,10 +5,15 @@ class ProductsController < ApplicationController
     @products = Product.includes(:user).order("created_at DESC")
   end
   def new
-    @Product = Product.new
+    @product = Product.new
   end
-  def created
-    Product.create(product_params)
+  def create
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to root_path
+    else 
+      render :new
+    end
   end
   def destroy
     product = Product.find(params[:id])
@@ -24,7 +29,7 @@ class ProductsController < ApplicationController
   end
   private
   def product_params
-    params.require(:product).permit(:name, :content, :category_id, :products_condition_id, :shipping_id, :delivery_fee_id, :delivery_day_id, :price).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :content, :category_id, :products_condition_id, :shipping_id, :delivery_fee_id, :delivery_day_id, :price, :image).merge(user_id: current_user.id)
   end
   def set_product
     @product = Product.find(params[:id])

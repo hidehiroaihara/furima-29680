@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   has_one_attached :image
   with_options numericality: { other_than: 1 } do
     validates :category_id
-    validates :product_condition_id
+    validates :products_condition_id
     validates :shipping_id
     validates :delivery_fee_id
     validates :delivery_day_id
