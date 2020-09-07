@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     Product.create(product_params)
   end
   def destroy
-    prodcut = Product.find(params[:id])
+    product = Product.find(params[:id])
     product.destory
   end
   def edit
@@ -30,8 +30,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
   def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
+      redirect_to action: :index unless user_signed_in?
   end
 end
