@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   def destroy
     prodcut = Product.find(params[:id])
     product.destory
+  end
   def edit
   end
   def update
