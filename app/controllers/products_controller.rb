@@ -34,18 +34,7 @@ class ProductsController < ApplicationController
 
   def show
   end
-
-  def cheked
-    product = Product.find(params[:id])
-    if product.checked
-      product.update(checked: false)
-    else
-      product.update(checkd: true)
-    end
-
-    fee = Product.find(params[:id])
-    render json: { product: fee }
-  end
+  
   private
   def product_params
     params.require(:product).permit(:name, :content, :category_id, :products_condition_id, :shipping_id, :delivery_fee_id, :delivery_day_id, :price, :image).merge(user_id: current_user.id)

@@ -22,4 +22,8 @@ class Product < ApplicationRecord
     }
     PRICE_REGEX = /\A[0-9]+\z/.freeze
     validates_format_of :price, with: PRICE_REGEX, message: 'には半角数字で入力して下さい'
+
+    with_options presence: true do
+      vaildates :name
+      validates : 
 end
