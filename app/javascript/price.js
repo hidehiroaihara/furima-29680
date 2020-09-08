@@ -1,3 +1,4 @@
+window.addEventListener('load', price);
 function price(){
   const priceInput = document.getElementById("item-price");
   const add_tax = document.getElementById("add-tax-price");
@@ -20,4 +21,4 @@ function price(){
     }
   });
 }
-window.addEventListener('load', price);
+
