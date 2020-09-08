@@ -82,10 +82,16 @@ describe Product  do
           @product.valid?
           expect(@product.errors.full_messages).to include("Price is not a number")
         end
-        it "販売価格が300~9999999の間以外だと登録できない" do
+        it "販売価格が300以下だと登録できない" do
           @product.price = 23
           @product.valid?
           expect(@product.errors.full_messages).to include("Price must be greater than or equal to 300")
+        end
+        it "販売価格が10000000以上だと登録できない" do
+          @product.price = 10000000
+          @product.valid?
+          expect(@product.errors.full_messages).to include("Price must be less than 9999999")
+
         end
         it "出品画像空では登録できない" do
           @product.image = nil
