@@ -9,7 +9,7 @@ class Product < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  validates :name, :content, :category, :products_condition, :shipping, :delivery_fee, :delivery_day, :price, presence: true
+  validates :name, :content, :category, :products_condition, :shipping, :delivery_fee, :delivery_day, :price, :image, presence: true
   validates :category_id, :products_condition_id, :shipping_id, :delivery_fee_id, :delivery_day_id, numericality: { other_than: 1 } 
  
 
