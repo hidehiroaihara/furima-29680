@@ -19,29 +19,29 @@ class ProductsController < ApplicationController
     end
   end
 
-  def destroy
-    product = Product.find(params[:id])
-    product.destory
-  end
+  # def destroy
+  #   product = Product.find(params[:id])
+  #   product.destory
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    product = Product.find(params[:id])
-    product.update
-  end
+  # def update
+  #   product = Product.find(params[:id])
+  #   product.update
+  # end
 
-  def show
-  end
+  # def show
+  # end
   
   private
   def product_params
     params.require(:product).permit(:name, :content, :category_id, :products_condition_id, :shipping_id, :delivery_fee_id, :delivery_day_id, :price, :image).merge(user_id: current_user.id)
   end
-  def set_product
-    @product = Product.find(params[:id])
-  end
+  # def set_product
+  #   @product = Product.find(params[:id])
+  # end
   def move_to_index
       redirect_to action: :index unless user_signed_in?
   end
