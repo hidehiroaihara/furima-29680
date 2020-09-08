@@ -16,7 +16,7 @@ class Product < ApplicationRecord
   validates :price,
     numericality: {
       greater_than_or_equal_to: 300, 
-      less_than: 9999999 
+      less_than: 9999999
     }
     PRICE_REGEX = /\A[0-9]+\z/.freeze
     validates_format_of :price, with: PRICE_REGEX, message: 'には半角数字で入力して下さい'
