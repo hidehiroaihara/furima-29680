@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destory]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, except: [:index, :show]
   
   def index
@@ -20,17 +20,15 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destory(product_params)
-    if @product.valid?
+     if  @product.destroy
       redirect_to root_path
     else
-     redirect_to edit_product_path(@product.id)
+      render :show
     end
   end
 
   def update
-    @product.update(product_params)
-    if @product.valid?
+    if @product.update(product_params)
       redirect_to product_path(@product.id)
     else
       redirect_to edit_product_path(@product.id)
