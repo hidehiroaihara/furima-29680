@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show]
+  before_action :set_product, only: [:show, :edit]
   before_action :move_to_index, except: [:index, :show]
   
   def index
@@ -24,13 +24,13 @@ class ProductsController < ApplicationController
   #   product.destory
   # end
 
-  # def edit
-  # end
+  def edit
+  end
 
-  # def update
-  #   product = Product.find(params[:id])
-  #   product.update
-  # end
+  def update
+    product = Product.find(params[:id])
+    product.update
+  end
 
    def show
    end
