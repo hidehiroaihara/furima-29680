@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, #:edit]
+  before_action :set_product, only: [:show]
   before_action :move_to_index, except: [:index, :show]
   
   def index
