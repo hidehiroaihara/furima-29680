@@ -1,5 +1,5 @@
-window.addEventListener('load', price);
-function price(){
+window.addEventListener('load', payment);
+function payment(){
   const priceInput = document.getElementById("item-price");
   const add_tax = document.getElementById("add-tax-price");
   const profit = document.getElementById("profit");
