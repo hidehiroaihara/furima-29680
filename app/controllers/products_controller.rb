@@ -24,9 +24,6 @@ class ProductsController < ApplicationController
   #   product.destory
   # end
 
-  def edit
-  end
-
   def update
     @product.update(product_params)
     if @product.valid?
@@ -36,9 +33,6 @@ class ProductsController < ApplicationController
     end
   end
 
-   def show
-   end
-  
   private
   def product_params
     params.require(:product).permit(:name, :content, :category_id, :products_condition_id, :shipping_id, :delivery_fee_id, :delivery_day_id, :price, :image).merge(user_id: current_user.id)
