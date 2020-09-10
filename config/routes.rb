@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   
   resources :products
   root to: "products#index"
+  resources :purchasers, only: [:index, :new, :create]
 end
