@@ -22,7 +22,7 @@ class PurchasersController < ApplicationController
   private
 
   def purchaser_params
-     params.require(:purchaser_address).permit(:post_code, :city, :house_number, :building, :phone_number).merge(purchaser_id: purchaser.id, uesr_id: current_user.id, product_id: params[:product_id])
+     params.require(:purchaser_address).permit(:post_code, :city, :house_number, :building, :phone_number, :token).merge(purchaser_id: purchaser.id, uesr_id: current_user.id, product_id: params[:product_id])
   end
 
   def set_product
@@ -39,5 +39,13 @@ class PurchasersController < ApplicationController
     if user_signed_in? && current_user.id == @product.user.id
       redirect_to root_path
     end
+  end
+
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      card: purchaser_params[:token],
+      currency:'jpy'
+    )
   end
 end
