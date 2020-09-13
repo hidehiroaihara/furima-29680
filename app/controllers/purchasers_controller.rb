@@ -3,6 +3,7 @@ class PurchasersController < ApplicationController
       set_product
       move_to_user 
       move_to_index
+      sold
   }
   def index
     @purchaser = PurchaserAddress.new
