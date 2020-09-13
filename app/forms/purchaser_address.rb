@@ -5,7 +5,7 @@ class PurchaserAddress
 
   with_options presence: true do
      validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'には半角数字で１１桁以内入力して下さい'} 
+     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'にはハイフン無しの半角数字で１１桁以内入力して下さい'} 
   end
   validates :city, :house_number, presence: true
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
