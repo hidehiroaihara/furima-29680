@@ -5,13 +5,13 @@ class PurchasersController < ApplicationController
       move_to_index
   }
   def index
-    @purchaser = Purchaser.includes(:product, :user)
+    @purchaser = PurchaserAddress.new
   end
-
+  
   def create
-    binding.pry
     @purchaser = PurchaserAddress.new(purchaser_params)
      if @purchaser.valid?
+        pay_item
         @purchaser.save
         return redirect_to root_path
      else
@@ -22,7 +22,7 @@ class PurchasersController < ApplicationController
   private
 
   def purchaser_params
-     params.require(:purchaser_address).permit(:post_code, :city, :house_number, :building, :phone_number, :token).merge(purchaser_id: purchaser.id, uesr_id: current_user.id, product_id: params[:product_id])
+     params.require(:purchaser_address).permit(:post_code, :city, :house_number, :phone_number, :prefecture, :purchaser_id, :building, :token).merge(user_id: current_user.id, product_id: params[:product_id])
   end
 
   def set_product
@@ -42,9 +42,11 @@ class PurchasersController < ApplicationController
   end
 
   def pay_item
+    # binding.pry
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-      card: purchaser_params[:token],
+      amount: @product.price,
+      card: params[:token],
       currency:'jpy'
     )
   end
