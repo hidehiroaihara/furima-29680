@@ -5,8 +5,9 @@ class Product < ApplicationRecord
   belongs_to_active_hash :shipping
   belongs_to_active_hash :delivery_fee
   belongs_to_active_hash :delivery_day
-  
+
   belongs_to :user
+  has_one :purchaser
   has_one_attached :image
 
   validates :name, :content, :category, :products_condition, :shipping, :delivery_fee, :delivery_day, :price, :image, presence: true
